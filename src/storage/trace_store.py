@@ -5,9 +5,6 @@ from typing import Any, Literal, Protocol
 
 from pydantic import BaseModel
 
-from src.storage.cosmos_client import CosmosTraceClient, load_cosmos_settings_from_env
-
-
 StoreBackend = Literal["auto", "memory", "cosmos"]
 
 
@@ -33,7 +30,7 @@ class _InMemoryTraceBackend:
 
 
 class _CosmosTraceBackend:
-    def __init__(self, client: CosmosTraceClient) -> None:
+    def __init__(self, client: Any) -> None:
         self._client = client
 
     def store(self, document: dict[str, Any]) -> None:
@@ -52,11 +49,31 @@ def _coerce_payload(value: BaseModel | dict[str, Any]) -> dict[str, Any]:
     raise TypeError("TraceStore payloads must be dicts or pydantic models.")
 
 
+def _cosmos_settings_available() -> bool:
+    try:
+        from src.storage.cosmos_client import load_cosmos_settings_from_env
+    except ModuleNotFoundError:
+        return False
+
+    return load_cosmos_settings_from_env() is not None
+
+
+def _create_cosmos_backend() -> _TraceBackend:
+    try:
+        from src.storage.cosmos_client import CosmosTraceClient
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "Cosmos backend requires azure dependencies. Install requirements or use --store memory."
+        ) from exc
+
+    return _CosmosTraceBackend(CosmosTraceClient.from_env())
+
+
 class TraceStore:
     def __init__(self, backend: StoreBackend = "auto") -> None:
         backend_name = backend
         if backend == "auto":
-            backend_name = "cosmos" if load_cosmos_settings_from_env() else "memory"
+            backend_name = "cosmos" if _cosmos_settings_available() else "memory"
 
         if backend_name == "memory":
             self._backend: _TraceBackend = _InMemoryTraceBackend()
@@ -64,7 +81,7 @@ class TraceStore:
             return
 
         if backend_name == "cosmos":
-            self._backend = _CosmosTraceBackend(CosmosTraceClient.from_env())
+            self._backend = _create_cosmos_backend()
             self.backend_name = "cosmos"
             return
 
