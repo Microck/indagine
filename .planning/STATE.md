@@ -3,10 +3,10 @@
 ## Current Position
 
 Phase: 3 of 4 (Diagnosis & Fixes)
-Plan: 2 of 3
-Status: In progress
-Last activity: 2026-02-11 - Completed 03-02-PLAN.md
-Progress: ████████░░░░ 8/12 plans (67%)
+Plan: 3 of 3
+Status: Phase complete
+Last activity: 2026-02-11 - Completed 03-03-PLAN.md
+Progress: █████████░░░ 9/12 plans (75%)
 
 ---
 
@@ -16,7 +16,7 @@ Progress: ████████░░░░ 8/12 plans (67%)
 |-------|------|--------|----------|
 | 1 | Foundation | Complete | 3/3 plans |
 | 2 | Analysis Pipeline | Complete | 3/3 plans |
-| 3 | Diagnosis & Fixes | In Progress | 2/3 plans |
+| 3 | Diagnosis & Fixes | Complete | 3/3 plans |
 | 4 | Demo & Submit | Not Started | 0/3 plans |
 
 ---
@@ -54,12 +54,14 @@ Progress: ████████░░░░ 8/12 plans (67%)
 | 03-01 | Diagnosis classification priority is deterministic by marker strength (tool misuse > hallucination > prompt ambiguity > context overflow > coordination > fallback) | Keeps root-cause outputs stable and explainable for fixture-driven verification |
 | 03-02 | FixGenerator maps each taxonomy root cause to deterministic fix templates with explicit target files | Guarantees FIX-01..FIX-03 proposal availability for every diagnosis type |
 | 03-02 | Fix proposal diffs use stdlib unified format (`---`/`+++`) generated from exact before/after snippets | Satisfies FIX-04 reviewability and keeps change artifacts auditable |
+| 03-03 | FixHistory now uses auto backend selection (Cosmos when all fix-history env vars exist, otherwise memory) | Keeps local development unblocked while enabling Cosmos-backed similarity history in configured environments |
+| 03-03 | DiagnosisEngine now resolves DIAG-04 links through `FixHistory.find_similar(...)` rather than payload introspection | Makes similarity linking explicit, testable, and backend-driven |
 
 ---
 
 ## Blockers/Concerns Carried Forward
 
-- Live Cosmos verification still requires user-provided `COSMOS_ENDPOINT`, `COSMOS_KEY`, `COSMOS_DATABASE`, and `COSMOS_CONTAINER_TRACES`.
+- Live Cosmos verification still requires user-provided `COSMOS_ENDPOINT`, `COSMOS_KEY`, `COSMOS_DATABASE`, `COSMOS_CONTAINER_TRACES`, and `COSMOS_CONTAINER_FIXES`.
 - System Python in this environment lacks required runtime modules; use `.venv/bin/python -m ...` for deterministic plan verification.
 
 ---
@@ -68,6 +70,7 @@ Progress: ████████░░░░ 8/12 plans (67%)
 
 | Date | Activity |
 |------|----------|
+| 2026-02-11 | Completed Phase 3 Plan 03 execution, added fix-history storage backends, similarity lookup tests, and DiagnosisEngine DIAG-04 wiring |
 | 2026-02-11 | Completed Phase 3 Plan 02 execution, added fix proposal models, unified diff utilities, taxonomy-wide FixGenerator coverage, and tests |
 | 2026-02-11 | Completed Phase 3 Plan 01 execution, added Diagnosis model/taxonomy, deterministic DiagnosisEngine, and taxonomy-coverage tests |
 | 2026-02-11 | Completed Phase 2 Plan 03 execution, added AutopsyController orchestration, pipeline wiring, and integration contract tests |
@@ -83,9 +86,9 @@ Progress: ████████░░░░ 8/12 plans (67%)
 
 ## Session Continuity
 
-Last session: 2026-02-11T04:20:29Z
-Stopped at: Completed 03-02-PLAN.md
-Resume file: .planning/phases/03-diagnosis-fixes/03-03-PLAN.md
+Last session: 2026-02-11T04:32:22Z
+Stopped at: Completed 03-03-PLAN.md
+Resume file: .planning/phases/04-demo-submit/04-01-PLAN.md
 
 ---
 
