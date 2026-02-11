@@ -3,10 +3,10 @@
 ## Current Position
 
 Phase: 2 of 4 (Analysis Pipeline)
-Plan: 2 of 3
-Status: In progress
-Last activity: 2026-02-11 - Completed 02-02-PLAN.md
-Progress: █████░░░░░░░ 5/12 plans (42%)
+Plan: 3 of 3
+Status: Phase complete
+Last activity: 2026-02-11 - Completed 02-03-PLAN.md
+Progress: ██████░░░░░░ 6/12 plans (50%)
 
 ---
 
@@ -15,7 +15,7 @@ Progress: █████░░░░░░░ 5/12 plans (42%)
 | Phase | Name | Status | Progress |
 |-------|------|--------|----------|
 | 1 | Foundation | Complete | 3/3 plans |
-| 2 | Analysis Pipeline | In Progress | 2/3 plans |
+| 2 | Analysis Pipeline | Complete | 3/3 plans |
 | 3 | Diagnosis & Fixes | Not Started | 0/3 plans |
 | 4 | Demo & Submit | Not Started | 0/3 plans |
 
@@ -48,6 +48,8 @@ Progress: █████░░░░░░░ 5/12 plans (42%)
 | 02-01 | Reasoning chain extraction prioritizes `thought`/`decision` then deterministic fallback from trace artifacts | Preserves explicit model reasoning when present while guaranteeing stable output for Phase 1 traces |
 | 02-02 | SchemaRegistry became the shared schema source while ToolRegistry stayed as a compatibility wrapper | Enables analyzer reuse without breaking subject scenario validation behavior |
 | 02-02 | Wrong-tool detection now checks `metadata.intended_tool` first, then falls back to search-intent heuristic | Makes SearchAgent TOOL_MISUSE diagnosable even when trace metadata is incomplete |
+| 02-03 | Autopsy findings are keyed as `trace_analyzer` and `tool_analyzer` in a unified `FindingsReport` envelope | Creates a stable analyzer contract for Phase 3 diagnosis consumers |
+| 02-03 | AutopsyPipeline uses injected TraceStore and delegates backend/env selection to TraceStore helpers | Keeps pipeline glue Azure-agnostic and avoids duplicate backend configuration parsing |
 
 ---
 
@@ -62,6 +64,7 @@ Progress: █████░░░░░░░ 5/12 plans (42%)
 
 | Date | Activity |
 |------|----------|
+| 2026-02-11 | Completed Phase 2 Plan 03 execution, added AutopsyController orchestration, pipeline wiring, and integration contract tests |
 | 2026-02-11 | Completed Phase 2 Plan 02 execution, added shared SchemaRegistry and ToolAnalyzer with fixture-driven misuse checks |
 | 2026-02-11 | Completed Phase 2 Plan 01 execution, added trace/findings models and TraceAnalyzer with fixture-driven tests |
 | 2026-02-11 | User approved Phase 1 verification checkpoint; phase marked complete with Cosmos live-check pending |
@@ -74,9 +77,9 @@ Progress: █████░░░░░░░ 5/12 plans (42%)
 
 ## Session Continuity
 
-Last session: 2026-02-11T02:21:10Z
-Stopped at: Completed 02-02-PLAN.md
-Resume file: .planning/phases/02-analysis-pipeline/02-03-PLAN.md
+Last session: 2026-02-11T02:28:36Z
+Stopped at: Completed 02-03-PLAN.md
+Resume file: .planning/phases/03-diagnosis-fixes/03-01-PLAN.md
 
 ---
 
