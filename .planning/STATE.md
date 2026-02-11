@@ -5,8 +5,8 @@
 Phase: 4 of 4 (Demo & Submit)
 Plan: 2 of 3
 Status: In progress
-Last activity: 2026-02-11 - Completed 04-02-PLAN.md
-Progress: ██████████░░ 10/12 plans (83%)
+Last activity: 2026-02-11 - Completed 04-01-PLAN.md
+Progress: ███████████░ 11/12 plans (92%)
 
 ---
 
@@ -17,7 +17,7 @@ Progress: ██████████░░ 10/12 plans (83%)
 | 1 | Foundation | Complete | 3/3 plans |
 | 2 | Analysis Pipeline | Complete | 3/3 plans |
 | 3 | Diagnosis & Fixes | Complete | 3/3 plans |
-| 4 | Demo & Submit | In progress | 1/3 plans |
+| 4 | Demo & Submit | In progress | 2/3 plans |
 
 ---
 
@@ -58,6 +58,8 @@ Progress: ██████████░░ 10/12 plans (83%)
 | 03-03 | DiagnosisEngine now resolves DIAG-04 links through `FixHistory.find_similar(...)` rather than payload introspection | Makes similarity linking explicit, testable, and backend-driven |
 | 04-02 | DEMO-04 documentation defines exactly 8 counted agents and treats AutopsyController/AutopsyPipeline as orchestration glue | Keeps README and architecture diagram aligned for judge review |
 | 04-02 | Mermaid `.mmd` is canonical with README fallback render command for PNG generation | Preserves deliverability when headless Mermaid CLI rendering is unavailable |
+| 04-01 | Live demo runner calls real modules end-to-end (`run_with_failure_detection` → `AutopsyPipeline` → `DiagnosisEngine` → `FixGenerator`) | Demonstrates actual pipeline behavior for video capture instead of synthetic helper wrappers |
+| 04-01 | Mock mode is fixture-backed via `demo/sample_output.md` with the same output sections as live mode | Guarantees reliable no-Azure fallback and keeps narration consistent between modes |
 
 ---
 
@@ -73,6 +75,7 @@ Progress: ██████████░░ 10/12 plans (83%)
 
 | Date | Activity |
 |------|----------|
+| 2026-02-11 | Completed Phase 4 Plan 01 execution, added a 2-minute demo script, live/mock demo runner, and sample output fallback |
 | 2026-02-11 | Completed Phase 4 Plan 02 execution, added README/demo quickstart docs, failure taxonomy, and architecture Mermaid source |
 | 2026-02-11 | User approved Phase 3 verification checkpoint; phase marked complete with live Cosmos similarity checks pending credentials |
 | 2026-02-11 | Completed Phase 3 Plan 03 execution, added fix-history storage backends, similarity lookup tests, and DiagnosisEngine DIAG-04 wiring |
@@ -91,9 +94,9 @@ Progress: ██████████░░ 10/12 plans (83%)
 
 ## Session Continuity
 
-Last session: 2026-02-11T17:42:37Z
-Stopped at: Completed 04-02 documentation plan (README + taxonomy + architecture source)
-Resume file: .planning/phases/04-demo-submit/04-01-PLAN.md
+Last session: 2026-02-11T17:45:40Z
+Stopped at: Completed 04-01 demo script and runner plan
+Resume file: .planning/phases/04-demo-submit/04-03-PLAN.md
 
 ---
 
