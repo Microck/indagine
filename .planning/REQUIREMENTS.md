@@ -4,12 +4,12 @@
 
 ### Foundation (FOUND)
 
-- [ ] **FOUND-01**: Foundry project initialized with tracing enabled
-- [ ] **FOUND-02**: BookingAgent that can fail on date format parsing
-- [ ] **FOUND-03**: SearchAgent that can fail on wrong tool selection
-- [ ] **FOUND-04**: SummaryAgent that can hallucinate information
-- [ ] **FOUND-05**: Failure Detector that watches for exceptions, validation failures, timeouts
-- [ ] **FOUND-06**: Trace capture stores execution traces to Cosmos DB
+- [x] **FOUND-01**: Foundry project initialized with tracing enabled
+- [x] **FOUND-02**: BookingAgent that can fail on date format parsing
+- [x] **FOUND-03**: SearchAgent that can fail on wrong tool selection
+- [x] **FOUND-04**: SummaryAgent that can hallucinate information
+- [x] **FOUND-05**: Failure Detector that watches for exceptions, validation failures, timeouts
+- [x] **FOUND-06**: Trace capture stores execution traces to Cosmos DB *(implementation complete; live Cosmos run pending credentials)*
 
 ### Analysis (ANLZ)
 
@@ -84,12 +84,12 @@
 
 | REQ-ID | Phase | Status | Success Criteria |
 |--------|-------|--------|------------------|
-| FOUND-01 | Phase 1: Foundation | Pending | Foundry project accessible with tracing enabled |
-| FOUND-02 | Phase 1: Foundation | Pending | BookingAgent reliably fails on DD/MM/YYYY dates |
-| FOUND-03 | Phase 1: Foundation | Pending | SearchAgent reliably fails on ambiguous tool selection |
-| FOUND-04 | Phase 1: Foundation | Pending | SummaryAgent reliably hallucinates on minimal sources |
-| FOUND-05 | Phase 1: Foundation | Pending | Failure Detector catches all 3 failure types |
-| FOUND-06 | Phase 1: Foundation | Pending | Traces stored in Cosmos DB, retrievable by failure_id |
+| FOUND-01 | Phase 1: Foundation | Complete | Foundry project accessible with tracing enabled |
+| FOUND-02 | Phase 1: Foundation | Complete | BookingAgent reliably fails on DD/MM/YYYY dates |
+| FOUND-03 | Phase 1: Foundation | Complete | SearchAgent reliably fails on ambiguous tool selection |
+| FOUND-04 | Phase 1: Foundation | Complete | SummaryAgent reliably hallucinates on minimal sources |
+| FOUND-05 | Phase 1: Foundation | Complete | Failure Detector catches all 3 failure types |
+| FOUND-06 | Phase 1: Foundation | Approved (pending live Cosmos check) | Traces stored in Cosmos DB, retrievable by failure_id |
 | ANLZ-01 | Phase 2: Analysis | Pending | Identifies failure step (N of M) for all test subjects |
 | ANLZ-02 | Phase 2: Analysis | Pending | Extracts reasoning chain as structured list |
 | ANLZ-03 | Phase 2: Analysis | Pending | Validates params against JSON schemas, reports mismatches |
