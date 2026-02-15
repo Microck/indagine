@@ -1,5 +1,7 @@
 # Submission Checklist (DEMO-03/04)
 
+Note: The hackathon portal typically accepts an uploaded/hosted demo video link. Committing `demo/video.mp4` to git is optional; you can keep it local and upload/link it during submission.
+
 ## Artifact Links
 
 - [ ] README: `README.md`
@@ -10,7 +12,8 @@
 
 ## Final Submission Requirements
 
-- [ ] Demo video exported to `demo/video.mp4` (MP4, about 2 minutes).
+- [ ] Demo video recorded and uploaded/linked in the portal (target: MP4, about 2 minutes).
+- [ ] Optional local copy kept at `demo/video.mp4` (do not commit if you prefer).
 - [ ] Demo video clearly shows: failure detection -> analyzer findings -> diagnosis -> fix diff.
 - [ ] README includes project overview, architecture definition, setup, and usage commands.
 - [ ] Architecture artifact is available (`docs/architecture.png`), or fallback render path from `docs/architecture.mmd` is documented.

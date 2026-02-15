@@ -3,10 +3,10 @@
 ## Current Position
 
 Phase: 4 of 4 (Demo & Submit)
-Plan: 4 of 5
-Status: In progress
-Last activity: 2026-02-11 - Completed 04-04-PLAN.md
-Progress: █████████████░ 13/14 plans (93%)
+Plan: 5 of 5
+Status: Phase complete
+Last activity: 2026-02-15 - Completed 04-05-PLAN.md
+Progress: ███████████████ 14/14 plans (100%)
 
 ---
 
@@ -17,7 +17,7 @@ Progress: █████████████░ 13/14 plans (93%)
 | 1 | Foundation | Complete | 3/3 plans |
 | 2 | Analysis Pipeline | Complete | 3/3 plans |
 | 3 | Diagnosis & Fixes | Complete | 3/3 plans |
-| 4 | Demo & Submit | In progress | 4/5 plans |
+| 4 | Demo & Submit | Complete | 5/5 plans |
 
 ---
 
@@ -71,7 +71,7 @@ Progress: █████████████░ 13/14 plans (93%)
 
 - Live Cosmos verification still requires user-provided `COSMOS_ENDPOINT`, `COSMOS_KEY`, `COSMOS_DATABASE`, `COSMOS_CONTAINER_TRACES`, and `COSMOS_CONTAINER_FIXES`.
 - System Python in this environment lacks required runtime modules; use `.venv/bin/python -m ...` for deterministic plan verification.
-- Final manual submission steps remain outside automation: record `demo/video.mp4`, complete `demo/submission_checklist.md`, and submit on the hackathon portal.
+- Manual follow-ups remain (video recording + portal submission), tracked out-of-band via `demo/recording_checklist.md` and `demo/submission_checklist.md`.
 
 ---
 
@@ -79,6 +79,7 @@ Progress: █████████████░ 13/14 plans (93%)
 
 | Date | Activity |
 |------|----------|
+| 2026-02-15 | Completed Phase 4 Plan 05: de-blocked submission checklist to treat video/portal steps as manual follow-ups and closed remaining automation gap |
 | 2026-02-11 | Completed Phase 4 Plan 04 execution, verified prior render commit, and closed the architecture PNG submission gap with approved human readability check |
 | 2026-02-11 | Completed Phase 4 Plan 03 execution and finalized recording/submission checklists for final packaging |
 | 2026-02-11 | Completed Phase 4 Plan 01 execution, added a 2-minute demo script, live/mock demo runner, and sample output fallback |
@@ -100,10 +101,10 @@ Progress: █████████████░ 13/14 plans (93%)
 
 ## Session Continuity
 
-Last session: 2026-02-11T20:40:34Z
-Stopped at: Completed 04-04 architecture diagram render plan
-Resume file: .planning/phases/04-demo-submit/04-04-SUMMARY.md
+Last session: 2026-02-15
+Stopped at: Completed 04-05 submission checklist de-blocking plan
+Resume file: .planning/phases/04-demo-submit/04-05-SUMMARY.md
 
 ---
 
-*Last updated: 2026-02-11*
+*Last updated: 2026-02-15*

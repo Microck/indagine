@@ -22,24 +22,24 @@
 
 ### Diagnosis (DIAG)
 
-- [ ] **DIAG-01**: Diagnosis Engine implements 6-type failure taxonomy
-- [ ] **DIAG-02**: Diagnosis Engine identifies root cause from analyzer findings
-- [ ] **DIAG-03**: Diagnosis Engine provides explanation of what went wrong
-- [ ] **DIAG-04**: Diagnosis Engine links to similar past failures (if any)
+- [x] **DIAG-01**: Diagnosis Engine implements 6-type failure taxonomy
+- [x] **DIAG-02**: Diagnosis Engine identifies root cause from analyzer findings
+- [x] **DIAG-03**: Diagnosis Engine provides explanation of what went wrong
+- [x] **DIAG-04**: Diagnosis Engine links to similar past failures (if any)
 
 ### Fixes (FIX)
 
-- [ ] **FIX-01**: Fix Generator proposes PROMPT_FIX changes (add instructions/examples)
-- [ ] **FIX-02**: Fix Generator proposes TOOL_CONFIG_FIX changes (add validation/transformation)
-- [ ] **FIX-03**: Fix Generator proposes GUARDRAIL_FIX changes (add output validation/retry)
-- [ ] **FIX-04**: Fix Generator shows exact diff of proposed changes
+- [x] **FIX-01**: Fix Generator proposes PROMPT_FIX changes (add instructions/examples)
+- [x] **FIX-02**: Fix Generator proposes TOOL_CONFIG_FIX changes (add validation/transformation)
+- [x] **FIX-03**: Fix Generator proposes GUARDRAIL_FIX changes (add output validation/retry)
+- [x] **FIX-04**: Fix Generator shows exact diff of proposed changes
 
 ### Demo (DEMO)
 
-- [ ] **DEMO-01**: Scripted demo scenario with BookingAgent date format failure
-- [ ] **DEMO-02**: 2-minute video showing: failure → analysis → diagnosis → fix suggestion
-- [ ] **DEMO-03**: README with project overview, architecture, and setup instructions
-- [ ] **DEMO-04**: Architecture diagram showing all 8 agents and data flow
+- [x] **DEMO-01**: Scripted demo scenario with BookingAgent date format failure
+- [ ] **DEMO-02**: 2-minute video showing: failure → analysis → diagnosis → fix suggestion *(manual recording/upload pending)*
+- [x] **DEMO-03**: README with project overview, architecture, and setup instructions
+- [x] **DEMO-04**: Architecture diagram showing all 8 agents and data flow
 
 ---
 
@@ -96,17 +96,17 @@
 | ANLZ-04 | Phase 2: Analysis | Complete | Detects wrong tool selection in SearchAgent scenario |
 | ANLZ-05 | Phase 2: Analysis | Complete | Orchestrates analyzers and waits for completion |
 | ANLZ-06 | Phase 2: Analysis | Complete | Produces unified FindingsReport with structured output |
-| DIAG-01 | Phase 3: Diagnosis | Pending | Classifies into taxonomy (TOOL_MISUSE, HALLUCINATION, etc.) |
-| DIAG-02 | Phase 3: Diagnosis | Pending | Produces root_cause with confidence score (0.0-1.0) |
-| DIAG-03 | Phase 3: Diagnosis | Pending | Generates human-readable explanation |
-| DIAG-04 | Phase 3: Diagnosis | Pending | Queries and links similar past failures |
-| FIX-01 | Phase 3: Fixes | Pending | Produces PROMPT_FIX proposals for failures |
-| FIX-02 | Phase 3: Fixes | Pending | Produces TOOL_CONFIG_FIX proposals for failures |
-| FIX-03 | Phase 3: Fixes | Pending | Produces GUARDRAIL_FIX proposals for failures |
-| FIX-04 | Phase 3: Fixes | Pending | Shows before/after diff for all proposed changes |
-| DEMO-01 | Phase 4: Demo | Pending | Demo script written and rehearsed |
-| DEMO-02 | Phase 4: Demo | Pending | 2-minute video recorded with voice-over |
-| DEMO-03 | Phase 4: Demo | Pending | README includes overview, architecture, setup, usage |
-| DEMO-04 | Phase 4: Demo | Pending | Architecture diagram (PNG/SVG) shows all agents |
+| DIAG-01 | Phase 3: Diagnosis | Complete | Classifies into taxonomy (TOOL_MISUSE, HALLUCINATION, etc.) |
+| DIAG-02 | Phase 3: Diagnosis | Complete | Produces root_cause with confidence score (0.0-1.0) |
+| DIAG-03 | Phase 3: Diagnosis | Complete | Generates human-readable explanation |
+| DIAG-04 | Phase 3: Diagnosis | Complete | Queries and links similar past failures |
+| FIX-01 | Phase 3: Fixes | Complete | Produces PROMPT_FIX proposals for failures |
+| FIX-02 | Phase 3: Fixes | Complete | Produces TOOL_CONFIG_FIX proposals for failures |
+| FIX-03 | Phase 3: Fixes | Complete | Produces GUARDRAIL_FIX proposals for failures |
+| FIX-04 | Phase 3: Fixes | Complete | Shows before/after diff for all proposed changes |
+| DEMO-01 | Phase 4: Demo | Complete | Demo script written and rehearsed |
+| DEMO-02 | Phase 4: Demo | Pending | 2-minute video recorded with voice-over *(manual recording/upload pending)* |
+| DEMO-03 | Phase 4: Demo | Complete | README includes overview, architecture, setup, usage |
+| DEMO-04 | Phase 4: Demo | Complete | Architecture diagram (PNG/SVG) shows all agents |
 
 **Coverage:** 20/20 requirements mapped (100%)
