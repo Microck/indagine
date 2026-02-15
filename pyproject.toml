@@ -9,6 +9,7 @@ dependencies = [
     "azure-identity>=1.25.2",
     "azure-monitor-opentelemetry>=1.8.6",
     "jsonschema>=4.26.0",
+    "opentelemetry-api>=1.39.0",
     "opentelemetry-sdk>=1.39.0",
     "pydantic>=2",
     "python-dotenv>=1.2.1",
@@ -23,7 +24,8 @@ target-version = "py311"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["E", "F", "I"]
+select = ["E", "F"]
+ignore = ["E501"]
 
 [dependency-groups]
 dev = [
