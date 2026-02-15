@@ -3,6 +3,17 @@ name = "indagine"
 version = "0.1.0"
 description = "Meta-agent system that debugs other agents when they fail"
 requires-python = ">=3.11"
+dependencies = [
+    "azure-ai-projects>=1.0.0",
+    "azure-cosmos>=4.14.6",
+    "azure-identity>=1.25.2",
+    "azure-monitor-opentelemetry>=1.8.6",
+    "jsonschema>=4.26.0",
+    "opentelemetry-sdk>=1.39.0",
+    "pydantic>=2",
+    "python-dotenv>=1.2.1",
+    "pyyaml>=6.0.3",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -13,3 +24,9 @@ line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.15.1",
+]
