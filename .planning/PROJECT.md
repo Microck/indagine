@@ -67,7 +67,13 @@ A meta-agent system that automatically debugs other AI agents when they fail. Wh
 ## Constraints
 
 - **Timeline**: 5 weeks (Feb 10 - Mar 15, 2026)
-- **Tech Stack**: Python, Microsoft Agent Framework, Azure AI Foundry
+- **Perfect Tech Stack**:
+  - **Language**: Python 3.12+ (AI/agent iteration velocity + rich ecosystem)
+  - **Runtime/Packaging**: `uv` + `pyproject.toml` as the single source of truth
+  - **Data modeling**: Pydantic v2
+  - **Azure integration**: Azure AI Foundry / Agents SDK (`azure-ai-projects`), Cosmos DB (`azure-cosmos`), Entra auth (`azure-identity`)
+  - **Observability**: OpenTelemetry + Azure Monitor exporter
+  - **Testing**: pytest
 - **Model Access**: GPT-4o via Foundry
 - **Storage**: Azure Cosmos DB (failures), Azure AI Search (RAG over past fixes)
 - **Tracing**: Must use Foundry Observability for trace capture
@@ -79,7 +85,7 @@ A meta-agent system that automatically debugs other AI agents when they fail. Wh
 |----------|-----------|---------|
 | Focus on TOOL_MISUSE first | Most concrete failure type, easiest to demo | — Pending |
 | 8 specialized agents | Clear separation of concerns, impressive multi-agent architecture | — Pending |
-| Python over TypeScript | Better Azure SDK support, faster prototyping | — Pending |
+| Python (perfect stack) | Best speed/ergonomics for agent analysis + Azure SDK parity | Accepted |
 | Validation Loop optional | Can cut if time runs short, demo still works with suggestions only | — Pending |
 
 ---
