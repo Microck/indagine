@@ -1,30 +1,46 @@
 # Indagine
 
-Indagine is a meta-agent system that debugs other AI agents when they fail: it captures a failure event, analyzes trace and tool behavior, diagnoses root cause with a shared taxonomy, and proposes concrete fixes.
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Built for: Microsoft AI Dev Days Hackathon 2026
-Categories: AI Apps and Agents, Best Use of Foundry, Best Multi-Agent System
-Demo video: <paste hosted link>
+Indagine is a meta-agent system that helps debug other AI agents when they fail.
 
-## Quickstart (Judge-safe)
+It captures a failure event, analyzes trace and tool behavior, diagnoses the root cause using a shared taxonomy, and proposes concrete fixes.
 
-These commands run without Azure credentials (deterministic subjects + mock demo path).
+## Features
+
+- Deterministic "subject" agents that fail predictably for repeatable debugging
+- Trace + tool analyzers that produce structured findings
+- Diagnosis engine with an explicit failure taxonomy
+- Fix proposal generation with diffs for easy review
+- Optional Azure integrations (Foundry, Cosmos) without making them mandatory
+
+## Installation
+
+Prereqs:
+- Python 3.11+
+- `uv`
 
 ```bash
 uv sync
-uv run pytest -q
+```
+
+## Quick Start
+
+Run the demo flow (mock mode):
+
+```bash
 uv run python demo/run_demo.py --mode mock
 ```
 
-## What It Does
+Run the test suite:
 
-End-to-end flow:
-
-```text
-subject failure -> failure detection -> trace/tool analysis -> diagnosis -> fix diff
+```bash
+uv run pytest -q
 ```
 
-Run the deterministic failure subjects:
+## Usage
+
+Run deterministic failure subjects:
 
 ```bash
 uv run python -m src.subjects.run_subjects booking
@@ -34,11 +50,12 @@ uv run python -m src.subjects.run_subjects summary
 
 ## Architecture
 
-Diagram: `docs/architecture.png`
-Diagram source: `docs/architecture.mmd`
-Failure taxonomy: `docs/failure_taxonomy.md`
+Artifacts:
+- Diagram: `docs/architecture.png`
+- Diagram source: `docs/architecture.mmd`
+- Failure taxonomy: `docs/failure_taxonomy.md`
 
-Agent definition for DEMO-04:
+Agent roles shown in the diagram:
 - BookingAgent
 - SearchAgent
 - SummaryAgent
@@ -48,15 +65,13 @@ Agent definition for DEMO-04:
 - DiagnosisEngine
 - FixGenerator
 
-IndagineController and IndaginePipeline are orchestration glue (shown in the diagram), not counted as separate agents.
-
 If you need to regenerate the PNG:
 
 ```bash
 npx -y @mermaid-js/mermaid-cli -i docs/architecture.mmd -o docs/architecture.png
 ```
 
-## Configuration (Optional Live Integrations)
+## Configuration
 
 Create `.env` from `.env.example`.
 
@@ -74,8 +89,6 @@ Cosmos backends (optional):
 
 ## Verification
 
-Automated:
-
 ```bash
 uv run pytest -q
 ```
@@ -92,11 +105,9 @@ Optional (Cosmos trace capture roundtrip):
 uv run python -m src.scripts.run_and_capture --store cosmos
 ```
 
-## Demo Assets
+## Contributing
 
-- Scenario script: `demo/scenario.md`
-- Recording checklist: `demo/recording_checklist.md`
-- Submission checklist: `demo/submission_checklist.md`
+Issues and pull requests are welcome.
 
 ## License
 
