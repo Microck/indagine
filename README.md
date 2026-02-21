@@ -2,21 +2,66 @@
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Indagine is a meta-agent system that helps debug other AI agents when they fail.
+Indagine is a meta-agent system for debugging other AI agents when they fail.
 
-It captures a failure event, analyzes trace and tool behavior, diagnoses the root cause using a shared taxonomy, and proposes concrete fixes.
+Given a failure event, Indagine analyzes trace + tool behavior, classifies the root cause using a shared taxonomy, and proposes concrete fixes (including unified diffs).
 
-## Features
+<!-- top-readme: begin -->
+## API / CLI reference
+
+- [demo/run_demo.py](demo/run_demo.py)
+- [src/subjects/run_subjects.py](src/subjects/run_subjects.py)
+- [src/scripts/verify_foundry.py](src/scripts/verify_foundry.py)
+- [src/scripts/run_and_capture.py](src/scripts/run_and_capture.py)
+
+## Support / Community
+
+- [docs/](docs/)
+
+## Security
+
+## Changelog / Releases
+
+- [pyproject.toml](pyproject.toml)
+
+## Roadmap
+
+- [TODO.md](TODO.md)
+<!-- top-readme: end -->
+
+## What you get
 
 - Deterministic "subject" agents that fail predictably for repeatable debugging
-- Trace + tool analyzers that produce structured findings
+- Structured analyzers (trace + tool/schema) that produce machine-readable findings
 - Diagnosis engine with an explicit failure taxonomy
-- Fix proposal generation with diffs for easy review
-- Optional Azure integrations (Foundry, Cosmos) without making them mandatory
+- Fix proposal generation designed for human review (diff-first)
+- Optional Azure integrations (Foundry, Cosmos, Azure Monitor) without making them mandatory
+
+## Demo (2 minutes)
+
+Fixture-backed (always works):
+
+```bash
+uv run python demo/run_demo.py --mode mock
+```
+
+Live run (runs the pipeline end-to-end against the deterministic subjects):
+
+```bash
+uv run python demo/run_demo.py --mode live --subject booking --store memory
+```
+
+The demo prints:
+
+- `failure_event` (what failed)
+- `findings` (trace + tool/schema analysis)
+- `diagnosis` (taxonomy classification + confidence)
+- `fixes` (proposed changes + unified diff)
 
 ## Installation
 
 Prereqs:
+
 - Python 3.11+
 - `uv`
 
@@ -24,68 +69,72 @@ Prereqs:
 uv sync
 ```
 
-## Quick Start
+## Quick start
 
-Run the demo flow (mock mode):
+Run a deterministic failure subject directly:
 
 ```bash
-uv run python demo/run_demo.py --mode mock
+uv run python -m src.subjects.run_subjects booking
 ```
 
-Run the test suite:
+Run the tests:
 
 ```bash
 uv run pytest -q
 ```
 
-## Usage
+## How it works
 
-Run deterministic failure subjects:
+Indagine is organized as a simple pipeline:
 
-```bash
-uv run python -m src.subjects.run_subjects booking
-uv run python -m src.subjects.run_subjects search
-uv run python -m src.subjects.run_subjects summary
-```
+1. A deterministic subject agent fails (predictably)
+2. `FailureDetector` captures a failure event and trace record
+3. Analyzers produce structured findings:
+   - Trace analysis: where the failure happened + reasoning chain
+   - Tool analysis: schema mismatches / tool misuse signals
+4. `DiagnosisEngine` maps findings onto a shared failure taxonomy
+5. `FixGenerator` emits fix proposals (including diffs) for review
 
-## Architecture
+Architecture diagram:
 
-Artifacts:
-- Diagram: `docs/architecture.png`
-- Diagram source: `docs/architecture.mmd`
-- Failure taxonomy: `docs/failure_taxonomy.md`
+![Indagine architecture](docs/architecture.png)
 
-Agent roles shown in the diagram:
-- BookingAgent
-- SearchAgent
-- SummaryAgent
-- FailureDetector
-- TraceAnalyzer
-- ToolAnalyzer
-- DiagnosisEngine
-- FixGenerator
+Key artifacts:
 
-If you need to regenerate the PNG:
+- `docs/failure_taxonomy.md` (shared diagnosis vocabulary)
+- `docs/architecture.mmd` (diagram source)
 
-```bash
-npx -y @mermaid-js/mermaid-cli -i docs/architecture.mmd -o docs/architecture.png
-```
+## Project layout
 
-## Configuration
+- `src/subjects/` deterministic agents that fail in known ways
+- `src/analyzers/` trace + tool analyzers that emit structured findings
+- `src/core/` pipeline orchestration, diagnosis, fix generation, tracing
+- `src/storage/` in-memory and Cosmos backends
+- `demo/` 2-minute demo script + fixture output
+- `docs/` architecture diagram + failure taxonomy
 
-Create `.env` from `.env.example`.
+## Configuration (optional)
 
-Foundry (optional live verification):
+Create `.env` from `.env.example` if you want Foundry/Azure Monitor verification.
+
+Foundry reachability (optional):
+
 - `FOUNDRY_PROJECT_ENDPOINT`
 - `FOUNDRY_MODEL_DEPLOYMENT`
-- `APPLICATIONINSIGHTS_CONNECTION_STRING` (optional)
 
-Cosmos backends (optional):
+Tracing export (optional):
+
+- `APPLICATIONINSIGHTS_CONNECTION_STRING`
+
+Cosmos storage (optional):
+
 - `COSMOS_ENDPOINT`
 - `COSMOS_KEY`
 - `COSMOS_DATABASE`
 - `COSMOS_CONTAINER_TRACES`
 - `COSMOS_CONTAINER_FIXES`
+
+Note: environment variables take precedence over `infra/foundry_config.yaml`.
 
 ## Verification
 
@@ -93,7 +142,7 @@ Cosmos backends (optional):
 uv run pytest -q
 ```
 
-Optional (live Foundry reachability):
+Optional (Foundry reachability):
 
 ```bash
 uv run python -m src.scripts.verify_foundry --strict
@@ -103,6 +152,14 @@ Optional (Cosmos trace capture roundtrip):
 
 ```bash
 uv run python -m src.scripts.run_and_capture --store cosmos
+```
+
+## Development
+
+Lint:
+
+```bash
+uv run ruff check .
 ```
 
 ## Contributing
