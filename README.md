@@ -11,7 +11,7 @@
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pyproject.toml)
 [![uv](https://img.shields.io/badge/package%20manager-uv-blueviolet)](https://github.com/astral-sh/uv)
 
-Indagine is a **meta-agent system for debugging other AI agents when they fail**. It captures execution traces, runs parallel analysis passes, classifies the root cause against a six-category failure taxonomy, and emits concrete diff-first fix proposals — all without requiring a live LLM.
+Indagine is a **meta-agent system for debugging other AI agents when they fail**. It captures execution traces, runs parallel analysis passes, classifies the root cause against a six-category failure taxonomy, and emits concrete diff-first fix proposals, all without requiring a live LLM.
 
 ---
 
@@ -59,12 +59,12 @@ Indagine is a **meta-agent system for debugging other AI agents when they fail**
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-1. **A failing subject agent runs** — `booking_agent`, `search_agent`, or `summary_agent` executes a deterministic scenario that fails in a known way.
-2. **FailureDetector wraps the run** — catches exceptions, timeouts, validation errors, and hallucination flags; wraps results in an OpenTelemetry span; emits a `FailureEvent` + `TraceRecord`.
-3. **TraceStore persists the trace** — stores `failure_event` + `trace_record` by `failure_id` (in-memory default, Cosmos DB optional).
-4. **IndagineController dispatches analyzers** — runs `TraceAnalyzer` and `ToolAnalyzer` sequentially or in parallel (thread pool), collecting a unified `FindingsReport`.
-5. **DiagnosisEngine classifies** — maps findings to one of six failure categories using a deterministic rule engine. Azure AI Foundry / GPT-4o is optionally consulted for richer LLM-backed explanations.
-6. **FixGenerator proposes fixes** — emits `FixProposal` objects with `title`, `rationale`, and a `diff` patch per changed file, ready to apply or review.
+1. **A failing subject agent runs** - `booking_agent`, `search_agent`, or `summary_agent` executes a deterministic scenario that fails in a known way.
+2. **FailureDetector wraps the run** - catches exceptions, timeouts, validation errors, and hallucination flags; wraps results in an OpenTelemetry span; emits a `FailureEvent` + `TraceRecord`.
+3. **TraceStore persists the trace** - stores `failure_event` + `trace_record` by `failure_id` (in-memory default, Cosmos DB optional).
+4. **IndagineController dispatches analyzers** - runs `TraceAnalyzer` and `ToolAnalyzer` sequentially or in parallel (thread pool), collecting a unified `FindingsReport`.
+5. **DiagnosisEngine classifies** - maps findings to one of six failure categories using a deterministic rule engine. Azure AI Foundry / GPT-4o is optionally consulted for richer LLM-backed explanations.
+6. **FixGenerator proposes fixes** - emits `FixProposal` objects with `title`, `rationale`, and a `diff` patch per changed file, ready to apply or review.
 
 ---
 
@@ -96,7 +96,7 @@ uv sync
 uv run python demo/run_demo.py --mode mock
 ```
 
-This prints a full JSON report — `findings`, `diagnosis`, and `fixes` — derived from the bundled `demo/sample_output.md` fixture.
+This prints a full JSON report (`findings`, `diagnosis`, and `fixes`) derived from the bundled `demo/sample_output.md` fixture.
 
 ---
 
@@ -125,10 +125,10 @@ Each subject prints a JSON result to stdout. `booking` and `search` trigger `TOO
 ### Run the end-to-end demo
 
 ```bash
-# Live — runs the full pipeline and prints the diagnosis + fixes
+# Live - runs the full pipeline and prints the diagnosis + fixes
 uv run python demo/run_demo.py --mode live --subject booking --store memory
 
-# Mock — uses the bundled fixture (no credentials required)
+# Mock - uses the bundled fixture (no credentials required)
 uv run python demo/run_demo.py --mode mock
 ```
 
@@ -153,7 +153,7 @@ Runs all three subject agents, stores their traces, and prints a JSON summary li
 
 ## Configuration
 
-Indagine works out of the box without any Azure credentials — all LLM and tracing integrations are optional.
+Indagine works out of the box without any Azure credentials. All LLM and tracing integrations are optional.
 
 ```bash
 cp .env.example .env
@@ -162,9 +162,9 @@ cp .env.example .env
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `FOUNDRY_PROJECT_ENDPOINT` | Optional | Azure AI Foundry project endpoint URL — enables GPT-4o-backed diagnosis |
+| `FOUNDRY_PROJECT_ENDPOINT` | Optional | Azure AI Foundry project endpoint URL - enables GPT-4o-backed diagnosis |
 | `FOUNDRY_MODEL_DEPLOYMENT` | Optional | Model deployment name as shown in Foundry "Models + endpoints" |
-| `APPLICATIONINSIGHTS_CONNECTION_STRING` | Optional | Azure Monitor connection string — enables cloud trace export; falls back to console |
+| `APPLICATIONINSIGHTS_CONNECTION_STRING` | Optional | Azure Monitor connection string - enables cloud trace export; falls back to console |
 
 Authentication uses `DefaultAzureCredential`. Without `az login`, set `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, and `AZURE_CLIENT_SECRET` in your environment.
 
@@ -334,7 +334,7 @@ The test suite covers:
 | `test_subject_failures.py` | Deterministic failure scenarios per subject agent |
 | `test_smoke.py` | End-to-end smoke test of the full pipeline |
 
-No mocks are used — all tests rely on real implementations and in-memory fakes.
+No mocks are used. All tests rely on real implementations and in-memory fakes.
 
 ---
 
@@ -353,7 +353,7 @@ For bug reports, include the subject agent name, the failure output JSON, and th
 
 ## License
 
-Apache-2.0 — see [`LICENSE`](LICENSE).
+Apache-2.0. See [`LICENSE`](LICENSE).
 
 ---
 
@@ -361,4 +361,4 @@ Apache-2.0 — see [`LICENSE`](LICENSE).
 
 Built at the **Microsoft AI Dev Days Hackathon 2026**.
 
-Indagine was designed to answer a recurring question in multi-agent systems: when an agent fails, how do you go from "something went wrong" to "here is the exact change that fixes it"? The answer is a meta-agent that treats agent failures the same way a forensic investigator treats evidence — systematically, without guessing.
+Indagine was designed to answer a recurring question in multi-agent systems: when an agent fails, how do you go from "something went wrong" to "here is the exact change that fixes it"? The answer is a meta-agent that treats agent failures the same way a forensic investigator treats evidence: systematically, without guessing.
