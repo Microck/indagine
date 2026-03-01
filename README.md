@@ -20,45 +20,45 @@ Indagine is a **meta-agent system for debugging other AI agents when they fail**
 ## How It Works
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                             Indagine Pipeline                                │
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                              Indagine Pipeline                               │
 │                                                                              │
 │   ┌──────────────┐                                                           │
 │   │ booking_agent│──┐                                                        │
 │   │ search_agent │  │  FailureDetector        TraceStore                     │
-│   │ summary_agent│──┴──► (wrap + run) ──────► (memory / Cosmos)             │
-│   └──────────────┘        captures OTel                 │                   │
-│        subject agents      trace + emits                 │ retrieve by       │
-│   (deterministic failures) failure_event                 │ failure_id        │
-│                                                          ▼                   │
-│                                          ┌───────────────────────────┐      │
-│                                          │    IndagineController     │      │
-│                                          │ (sequential or parallel)  │      │
-│                                          └────────┬──────────────────┘      │
+│   │ summary_agent│──┴──► (wrap + run) ──────► (memory / Cosmos)              │
+│   └──────────────┘        captures OTel                 │                    │
+│        subject agents      trace + emits                 │ retrieve by        │
+│   (deterministic failures) failure_event                 │ failure_id         │
+│                                                          ▼                    │
+│                                          ┌───────────────────────────┐       │
+│                                          │    IndagineController     │       │
+│                                          │ (sequential or parallel)  │       │
+│                                          └────────┬──────────────────┘       │
 │                                                   │                          │
-│                              ┌────────────────────┼────────────────────┐    │
-│                              ▼                                          ▼    │
-│                      ┌──────────────┐                          ┌───────────┐│
-│                      │ TraceAnalyzer│                          │ToolAnalyzer││
-│                      │  step flow,  │                          │ schema     ││
-│                      │  errors,     │                          │ mismatches,││
-│                      │  reasoning   │                          │ wrong tool ││
-│                      └──────┬───────┘                          └─────┬─────┘│
-│                             │     TraceFinding + ToolFinding          │      │
-│                             └──────────────┬──────────────── ─────────┘      │
+│                              ┌────────────────────┼────────────────────┐     │
+│                              ▼                                         ▼     │
+│                      ┌──────────────┐                          ┌───────────┐ │
+│                      │ TraceAnalyzer│                          │ToolAnalyzer│ │
+│                      │  step flow,  │                          │ schema     │ │
+│                      │  errors,     │                          │ mismatches,│ │
+│                      │  reasoning   │                          │ wrong tool │ │
+│                      └──────┬───────┘                          └─────┬─────┘ │
+│                             │     TraceFinding + ToolFinding         │       │
+│                             └──────────────┬─────────────────────────┘       │
 │                                            ▼                                 │
-│                                  ┌─────────────────┐                        │
-│                                  │ DiagnosisEngine  │  deterministic         │
-│                                  │  classify root   │  rule-based +          │
-│                                  │  cause + subtype │  optional Foundry      │
-│                                  └────────┬─────────┘  GPT-4o               │
+│                                  ┌─────────────────┐                         │
+│                                  │ DiagnosisEngine │  deterministic          │
+│                                  │  classify root  │  rule-based +           │
+│                                  │  cause + subtype│  optional Foundry       │
+│                                  └────────┬────────┘  GPT-4o                 │
 │                                           │ Diagnosis                        │
-│                                           ▼                                 │
-│                                  ┌─────────────────┐                        │
-│                                  │  FixGenerator   │  FixProposal with      │
+│                                           ▼                                  │
+│                                  ┌─────────────────┐                         │
+│                                  │  FixGenerator   │  FixProposal with       │
 │                                  │  diff patches   │  unified diff patch     │
-│                                  └─────────────────┘                        │
-└─────────────────────────────────────────────────────────────────────────────┘
+│                                  └─────────────────┘                         │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 1. **A failing subject agent runs** - `booking_agent`, `search_agent`, or `summary_agent` executes a deterministic scenario that fails in a known way.
