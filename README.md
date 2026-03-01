@@ -7,6 +7,8 @@
 
 **When an AI agent breaks, Indagine investigates why.**
 
+Derived from the Italian word for *"investigation"* or *"inquiry"*, **Indagine** acts as a forensic specialist for your multi-agent systems, treating agent failures as evidence to be systematically analyzed.
+
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pyproject.toml)
 [![uv](https://img.shields.io/badge/package%20manager-uv-blueviolet)](https://github.com/astral-sh/uv)
