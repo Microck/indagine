@@ -28,9 +28,9 @@ Indagine is a **meta-agent system for debugging other AI agents when they fail**
 │   │ search_agent │  │  FailureDetector        TraceStore                     │
 │   │ summary_agent│──┴──► (wrap + run) ──────► (memory / Cosmos)              │
 │   └──────────────┘        captures OTel                 │                    │
-│        subject agents      trace + emits                 │ retrieve by        │
-│   (deterministic failures) failure_event                 │ failure_id         │
-│                                                          ▼                    │
+│        subject agents      trace + emits                 │ retrieve by       │
+│   (deterministic failures) failure_event                 │ failure_id        │
+│                                                          ▼                   │
 │                                          ┌───────────────────────────┐       │
 │                                          │    IndagineController     │       │
 │                                          │ (sequential or parallel)  │       │
@@ -38,12 +38,12 @@ Indagine is a **meta-agent system for debugging other AI agents when they fail**
 │                                                   │                          │
 │                              ┌────────────────────┼────────────────────┐     │
 │                              ▼                                         ▼     │
-│                      ┌──────────────┐                          ┌───────────┐ │
-│                      │ TraceAnalyzer│                          │ToolAnalyzer│ │
-│                      │  step flow,  │                          │ schema     │ │
-│                      │  errors,     │                          │ mismatches,│ │
-│                      │  reasoning   │                          │ wrong tool │ │
-│                      └──────┬───────┘                          └─────┬─────┘ │
+│                      ┌──────────────┐                         ┌────────────┐ │
+│                      │ TraceAnalyzer│                         │ToolAnalyzer│ │
+│                      │  step flow,  │                         │ schema     │ │
+│                      │  errors,     │                         │ mismatches,│ │
+│                      │  reasoning   │                         │ wrong tool │ │
+│                      └──────┬───────┘                         └─────┬──────┘ │
 │                             │     TraceFinding + ToolFinding         │       │
 │                             └──────────────┬─────────────────────────┘       │
 │                                            ▼                                 │
@@ -363,6 +363,6 @@ Apache-2.0. See [`LICENSE`](LICENSE).
 
 ## Origin
 
-Built at the **Microsoft AI Dev Days Hackathon 2026**.
+Built for the **Microsoft AI Dev Days Hackathon 2026**.
 
 Indagine was designed to answer a recurring question in multi-agent systems: when an agent fails, how do you go from "something went wrong" to "here is the exact change that fixes it"? The answer is a meta-agent that treats agent failures the same way a forensic investigator treats evidence: systematically, without guessing.
