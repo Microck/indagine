@@ -21,5 +21,7 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: uv sync --frozen
+      - name: Run lint
+        run: uv run ruff check .
       - name: Run tests
         run: uv run pytest -q

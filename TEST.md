@@ -60,6 +60,7 @@ uv run python -m src.scripts.run_and_capture --store cosmos
 
 - README: `README.md`
 - Architecture diagram: `docs/architecture.png` (source: `docs/architecture.mmd`)
-- Recording checklist: `demo/recording_checklist.md`
-- Submission checklist: `demo/submission_checklist.md`
+- Demo runner: `demo/run_demo.py`
+- Mock fixture: `demo/sample_output.md`
+- Voiceover script: `demo/voiceover.md`
 - Optional local video artifact: `demo/video.mp4`

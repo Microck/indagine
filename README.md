@@ -204,7 +204,8 @@ Each subject can be run standalone or wired through the full Indagine pipeline v
 indagine/
 ├── demo/
 │   ├── run_demo.py          # End-to-end demo runner (mock + live modes)
-│   └── sample_output.md     # Pre-recorded fixture used by --mode mock
+│   ├── sample_output.md     # Pre-recorded fixture used by --mode mock
+│   └── voiceover.md         # Narration script for the recorded demo
 ├── docs/
 │   ├── brand/               # Logo SVGs (light + dark)
 │   ├── architecture.mmd     # Mermaid source for the architecture diagram
@@ -334,7 +335,8 @@ The test suite covers:
 | `test_trace_store_memory.py` | In-memory store round-trip |
 | `test_fix_history_memory.py` | In-memory fix history similarity lookup |
 | `test_subject_failures.py` | Deterministic failure scenarios per subject agent |
-| `test_smoke.py` | End-to-end smoke test of the full pipeline |
+| `test_demo_runner.py` | Mock fixture load plus live booking pipeline smoke coverage |
+| `test_smoke.py` | Import smoke coverage for core tracing setup |
 
 No mocks are used. All tests rely on real implementations and in-memory fakes.
 
